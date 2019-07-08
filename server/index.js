@@ -7,15 +7,15 @@ const db = require('./db/index');
 app.use(express.static(path.resolve(__dirname, '..', 'client','dist')));
 
 app.get('/reservation', (req, res) => {
-  const {restaurant_id, startTimestamp, endTimestamp} = req.params;
-  const query = `SELECT * FROM reservation WHERE restaurant = ${restaurant_id} AND timestamp BETWEEN ${startTimestamp} AND ${endTimestamp}`;
-  db.query(query, (err, results) => {
+  const {restaurant_id, startTimestamp, endTimestamp} = req.query; // get query parameters
+  const sqlQuery = `SELECT * FROM reservation WHERE restaurant_id = ${restaurant_id} AND timestamp BETWEEN ${startTimestamp} AND ${endTimestamp}`;
+  db.query(sqlQuery, (err, results) => {
     if (err) {
       res.status(500).send(err);
     } else {
       res.status(200).send(results);
     }
-  })
+  });
 });
 
 app.listen(port, () => {
