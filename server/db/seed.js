@@ -1,5 +1,5 @@
-const db = require('./index');
 const moment = require('moment');
+const db = require('./index');
 
 const createSeed = (numOfDays) => {
   const seedArr = [];
@@ -13,22 +13,22 @@ const createSeed = (numOfDays) => {
         const timestamp = startTimeStamp + 64800 + k * 3600;
         const row = [restaurant_id, timestamp, num_of_seat];
         seedArr.push(row);
-      }  
+      }
     }
   }
-  return seedArr
-}
+  return seedArr;
+};
 
 const insertSeedIntoTable = () => {
   const seed = createSeed(90);
-  var insertQuery = "INSERT INTO reservation (restaurant_id, timestamp, num_of_seat) VALUES ?";
+  const insertQuery = 'INSERT INTO reservation (restaurant_id, timestamp, num_of_seat) VALUES ?';
   db.query(insertQuery, [seed], (err, result) => {
     if (err) {
       console.log(err);
     } else {
       console.log('Data successfully inserted');
     }
-  })
-}
+  });
+};
 
 insertSeedIntoTable();

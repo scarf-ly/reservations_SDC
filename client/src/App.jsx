@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
-    return(
+    return (
       <div>Hello World!</div>
-    )
+    );
   }
 }
 
