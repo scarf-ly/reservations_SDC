@@ -6,11 +6,17 @@ class CalendarGrid extends React.Component {
     super(props);
   }
 
+  getFirstDayOfMonth() {
+    const {chosenDay} = this.props;
+    const firstDay = moment(chosenDay).startOf("month").format("d"); 
+    return firstDay;
+  };
+
   render() {
-    const {getFirstDayOfMonth, today, chosenDay} = this.props;
+    const {today, chosenDay} = this.props;
 
     let emptyDaysInMonth = [];
-    for (let i = 0; i < getFirstDayOfMonth(); i++) {
+    for (let i = 0; i < this.getFirstDayOfMonth(); i++) {
       emptyDaysInMonth.push(
         <td key={`emptyDay${i}`} className='calendar-day empty'>{''}</td>
       );
