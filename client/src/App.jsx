@@ -24,7 +24,7 @@ const StyledButton = styled.button`
 `;
 
 const IslandContainer = styled.div`
-  height: 160.88px;
+  height: 500.88px;
   width: 297.98px;
   background: #FFFFFF;
   border: 1px solid #e6e6e6;
@@ -91,9 +91,10 @@ class App extends React.Component {
                 <CalenderPicker className='calender-picker'>
                   <div>
                     <span></span>
-                    <Calendar />
+                    <input></input>
                     <span></span>
                   </div>
+                  <Calendar />
                 </CalenderPicker>
                 <TimePicker className='time-picker'>
                   <div>
