@@ -50,7 +50,7 @@ class Calendar extends React.Component {
     return (
       <div>
         <span></span>
-        <div onClick={this.toggleCalender}>{this.state.chosenDay.format('dddd[,] MMMM Do[,] YYYY')}</div>
+        <div onClick={this.toggleCalender}>{this.state.chosenDay.format('dddd[,] MMMM D[,] YYYY')}</div>
         <span></span>
         {this.state.calendarDisplay
           ?
