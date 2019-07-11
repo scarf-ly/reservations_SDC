@@ -24,9 +24,9 @@ class CalendarHeader extends React.Component {
     return (
       <thead>
         <tr>
-          <td colSpan='1' onClick={onPreHandler}>«</td>
+          <td id='prevButton' colSpan='1' onClick={onPreHandler}>«</td>
           <td colSpan='5'>{this.getMonthAndYear()}</td>
-          <td colSpan='1' onClick={onNextHandler}>»</td>
+          <td id='nextButton' colSpan='1' onClick={onNextHandler}>»</td>
         </tr>
         <tr>{weekdayShortName}</tr>
       </thead>
