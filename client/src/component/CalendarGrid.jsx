@@ -53,7 +53,7 @@ class CalendarGrid extends React.Component {
     });
 
     let allDaysInMonth = rows.map((day, i) => {
-      return <tr key={`Day${i}`}>{day}</tr>;
+      return <tr key={`Day${i}`} onClick={(event) => {this.props.onChosenHandler(event.target.innerText)}}>{day}</tr>;
     });
 
 
