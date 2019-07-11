@@ -12,6 +12,7 @@ class Calendar extends React.Component {
     this.state = {
       today: moment(),
       chosenDay: moment(),
+      renderDay: moment(),
       calendarDisplay: false
     };
 
@@ -28,14 +29,20 @@ class Calendar extends React.Component {
 
   onPreHandler() {
     this.setState({
-      chosenDay: this.state.chosenDay.subtract(1, 'month')
+      renderDay: this.state.renderDay.subtract(1, 'month')
     });
   }
 
   onNextHandler() {
     this.setState({
-      chosenDay: this.state.chosenDay.add(1, 'month')
+      renderDay: this.state.renderDay.add(1, 'month')
     });
+  }
+
+  onChosenHandler() {
+    this.setState({
+
+    })
   }
 
   render() {
@@ -47,8 +54,8 @@ class Calendar extends React.Component {
         {this.state.calendarDisplay
           ?
           <table className="calendar-day">
-            <CalendarHeader today={this.state.today} chosenDay={this.state.chosenDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
-            <CalendarGrid today={this.state.today} chosenDay={this.state.chosenDay}/>
+            <CalendarHeader today={this.state.today} renderDay={this.state.renderDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
+            <CalendarGrid today={this.state.today} chosenDay={this.state.chosenDay} renderDay={this.state.renderDay}/>
           </table>
           :
           null
