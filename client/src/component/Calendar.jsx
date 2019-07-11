@@ -10,7 +10,6 @@ class Calendar extends React.Component {
     super(props);
 
     this.state = {
-      today: moment(),
       chosenDay: moment(),
       renderDay: moment(),
       calendarDisplay: false
@@ -54,8 +53,8 @@ class Calendar extends React.Component {
         {this.state.calendarDisplay
           ?
           <table className="calendar-day">
-            <CalendarHeader today={this.state.today} renderDay={this.state.renderDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
-            <CalendarGrid today={this.state.today} chosenDay={this.state.chosenDay} renderDay={this.state.renderDay}/>
+            <CalendarHeader renderDay={this.state.renderDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
+            <CalendarGrid chosenDay={this.state.chosenDay} renderDay={this.state.renderDay}/>
           </table>
           :
           null

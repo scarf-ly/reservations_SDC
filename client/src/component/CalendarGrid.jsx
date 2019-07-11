@@ -13,7 +13,7 @@ class CalendarGrid extends React.Component {
   };
 
   render() {
-    const {today, chosenDay, renderDay} = this.props;
+    const {chosenDay, renderDay} = this.props;
 
     let emptyDaysInMonth = [];
     for (let i = 0; i < this.getFirstDayOfMonth(); i++) {
@@ -24,7 +24,7 @@ class CalendarGrid extends React.Component {
 
     let daysInMonth = [];
     for (let k = 1; k <= renderDay.daysInMonth(); k++) {
-      let currentDayClass = k == today.format('D') ? 'today' : '';  // TODO: update to comparing date rather than just day
+      let currentDayClass = k == moment().format('D') ? 'today' : '';  // TODO: update to comparing date rather than just day
       let chosenDayClass = k == chosenDay.format('D') ? 'chosen' : '';
       daysInMonth.push(
         <td key={`nonEmptyDay${k}`} className={`calendar-day ${currentDayClass} ${chosenDayClass}`}>
