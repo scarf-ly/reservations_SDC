@@ -6,12 +6,4 @@ describe('MyComponent', () => {
   it('should whatever', () => {
     const wrapper = shallow(<Calendar />);
   });
-})
-
-
-// describe('MyComponent', () => {
-//   it ('should be true', () => {
-//     const foo = true;
-//     expect(foo).toBe(true);
-//   });
-// })
+});
