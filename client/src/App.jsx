@@ -76,6 +76,8 @@ class App extends React.Component {
     super(props)
   }
 
+  
+ 
   render() {
     return(
       <IslandContainer className='island-container'>
@@ -87,10 +89,6 @@ class App extends React.Component {
             <div className='reservation-form'>
               <ReservationFields className='reservation-fields'>
                 <CalenderPicker className='calender-picker'>
-                  <div>
-                    <span></span>
-                    <span></span>
-                  </div>
                   <Calendar />
                 </CalenderPicker>
                 <TimePicker className='time-picker'>
