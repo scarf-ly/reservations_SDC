@@ -83,9 +83,9 @@ class App extends React.Component {
                   <div>
                     <span></span>
                     <select defaultValue='1900' onChange={(event) => {this.onChangeHandler('chosenTime', event.target.value)}}>
-                      <option value="1800">06:00 pm</option>
-                      <option value="1900">07:00 pm</option>
-                      <option value="2000">08:00 pm</option>
+                      <option value='1800'>06:00 pm</option>
+                      <option value='1900'>07:00 pm</option>
+                      <option value='2000'>08:00 pm</option>
                     </select>
                     <span></span>
                   </div>
@@ -94,14 +94,14 @@ class App extends React.Component {
                   <div>
                     <span></span>
                     <select defaultValue='4' onChange={(event) => {this.onChangeHandler('partyNum', event.target.value)}}>
-                      <option value="1">1 person</option>
-                      <option value="2">2 people</option>
-                      <option value="3">3 people</option>
-                      <option value="4">4 people</option>
-                      <option value="5">5 people</option>
-                      <option value="6">6 people</option>
-                      <option value="7">7 people</option>
-                      <option value="8">8 people</option>
+                      <option value='1'>1 person</option>
+                      <option value='2'>2 people</option>
+                      <option value='3'>3 people</option>
+                      <option value='4'>4 people</option>
+                      <option value='5'>5 people</option>
+                      <option value='6'>6 people</option>
+                      <option value='7'>7 people</option>
+                      <option value='8'>8 people</option>
                     </select>
                     <span></span>
                   </div>
