@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Calendar from './component/Calendar.jsx';
+import moment from 'moment';
 
 const ReservationHeader = styled.div`
   margin-top: 5%;
@@ -74,9 +75,20 @@ const FullWidthSelect = styled.select`
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      chosenDay: moment()
+    }
+
+    this.onChosenHandler = this.onChosenHandler.bind(this);
   }
 
-  
+  onChosenHandler(unix) {
+    var newChosenDay = moment.unix(unix);
+    this.setState({
+      chosenDay: newChosenDay
+    })
+  } 
  
   render() {
     return(
@@ -89,7 +101,7 @@ class App extends React.Component {
             <div className='reservation-form'>
               <ReservationFields className='reservation-fields'>
                 <CalenderPicker className='calender-picker'>
-                  <Calendar />
+                  <Calendar chosenDay={this.state.chosenDay} onChosenHandler={this.onChosenHandler}/>
                 </CalenderPicker>
                 <TimePicker className='time-picker'>
                   <div>
