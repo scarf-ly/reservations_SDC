@@ -7,13 +7,13 @@ class CalendarGrid extends React.Component {
   }
 
   getFirstDayOfMonth() {
-    const {chosenDay} = this.props;
-    const firstDay = moment(chosenDay).startOf("month").format("d"); 
+    const {renderDay} = this.props;
+    const firstDay = moment(renderDay).startOf("month").format("d"); 
     return firstDay;
   };
 
   render() {
-    const {today, chosenDay} = this.props;
+    const {chosenDay, renderDay} = this.props;
 
     let emptyDaysInMonth = [];
     for (let i = 0; i < this.getFirstDayOfMonth(); i++) {
@@ -23,11 +23,15 @@ class CalendarGrid extends React.Component {
     }
 
     let daysInMonth = [];
-    for (let k = 1; k <= chosenDay.daysInMonth(); k++) {
-      let currentDayClass = k == today.format('D') ? 'today' : '';
-      let chosenDayClass = k == chosenDay.format('D') ? 'chosen' : '';
+    for (let k = 1; k <= renderDay.daysInMonth(); k++) {
+      let renderDayYearMonth = renderDay.format('YYYY MM');
+      let currentYearMonthMatch = moment().format('YYYY MM') === renderDayYearMonth;
+      let chosenYearMonthMatch = chosenDay.format('YYYY MM') === renderDayYearMonth;
+      let currentDayClass = k == moment().format('D') && currentYearMonthMatch ? 'today' : '';
+      let chosenDayClass = k == chosenDay.format('D') && chosenYearMonthMatch ? 'chosen' : '';
+      let value = moment(`${renderDayYearMonth} ${k}`, 'YYYY MM D').unix();
       daysInMonth.push(
-        <td key={`nonEmptyDay${k}`} className={`calendar-day ${currentDayClass} ${chosenDayClass}`}>
+        <td key={`nonEmptyDay${k}`} className={`calendar-day ${currentDayClass} ${chosenDayClass}`} value={value}>
           {k}
         </td>
       );
@@ -51,7 +55,7 @@ class CalendarGrid extends React.Component {
     });
 
     let allDaysInMonth = rows.map((day, i) => {
-      return <tr key={`Day${i}`}>{day}</tr>;
+      return <tr key={`Day${i}`} onClick={(event) => {this.props.onChosenHandler(event.target.attributes.value.value)}}>{day}</tr>;
     });
 
 

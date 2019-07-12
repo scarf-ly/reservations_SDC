@@ -7,8 +7,8 @@ class CalendarHeader extends React.Component {
   }
 
   getMonthAndYear() {
-    const month = this.props.chosenDay.format('MMMM');
-    const year = this.props.chosenDay.format('Y')
+    const month = this.props.renderDay.format('MMMM');
+    const year = this.props.renderDay.format('Y')
     return `${month} ${year}`;
   }
 

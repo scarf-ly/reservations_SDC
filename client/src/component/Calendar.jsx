@@ -10,8 +10,7 @@ class Calendar extends React.Component {
     super(props);
 
     this.state = {
-      today: moment(),
-      chosenDay: moment(),
+      renderDay: moment(),
       calendarDisplay: false
     };
 
@@ -28,13 +27,13 @@ class Calendar extends React.Component {
 
   onPreHandler() {
     this.setState({
-      chosenDay: this.state.chosenDay.subtract(1, 'month')
+      renderDay: this.state.renderDay.subtract(1, 'month')
     });
   }
 
   onNextHandler() {
     this.setState({
-      chosenDay: this.state.chosenDay.add(1, 'month')
+      renderDay: this.state.renderDay.add(1, 'month')
     });
   }
 
@@ -42,13 +41,13 @@ class Calendar extends React.Component {
     return (
       <div>
         <span></span>
-        <div onClick={this.toggleCalender}>{this.state.today.format('dddd[,] MMMM Do[,] YYYY')}</div>
+        <div onClick={this.toggleCalender}>{this.props.chosenDay.format('dddd[,] MMMM D[,] YYYY')}</div>
         <span></span>
         {this.state.calendarDisplay
           ?
           <table className="calendar-day">
-            <CalendarHeader today={this.state.today} chosenDay={this.state.chosenDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
-            <CalendarGrid today={this.state.today} chosenDay={this.state.chosenDay}/>
+            <CalendarHeader renderDay={this.state.renderDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
+            <CalendarGrid chosenDay={this.props.chosenDay} renderDay={this.state.renderDay} onChosenHandler={this.props.onChosenHandler}/>
           </table>
           :
           null
