@@ -125,6 +125,15 @@ class App extends React.Component {
         console.log(err);
       })
   }
+
+  displaySpotsLeftMessage() {
+    const {spotLeft, partyNum} = this.state;
+    if (spotLeft != null && spotLeft >= partyNum && Math.floor(spotLeft / partyNum) <= 3) {
+      return <div>Only {Math.floor(spotLeft / partyNum)} reservation(s) available for party of {partyNum}</div>
+    } else if (spotLeft != null && spotLeft < partyNum) {
+      return <div>Sorry, there's no more online reservations available for party of {partyNum}</div>
+    }
+  }
  
   render() {
     return(
@@ -168,6 +177,7 @@ class App extends React.Component {
                 </PeoplePicker>
               </ReservationFields>
               <StyledButton>Find a Table</StyledButton>
+              {this.displaySpotsLeftMessage()}
             </div>
           </ReservationFormContainer>
       </IslandContainer>
