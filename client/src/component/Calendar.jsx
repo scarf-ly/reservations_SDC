@@ -45,7 +45,7 @@ class Calendar extends React.Component {
         <span></span>
         {this.state.calendarDisplay
           ?
-          <table className="calendar-day">
+          <table className='calendar-day'>
             <CalendarHeader renderDay={this.state.renderDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
             <CalendarGrid chosenDay={this.props.chosenDay} renderDay={this.state.renderDay} onChosenHandler={this.props.onChosenHandler}/>
           </table>

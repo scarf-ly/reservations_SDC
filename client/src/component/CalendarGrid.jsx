@@ -8,7 +8,7 @@ class CalendarGrid extends React.Component {
 
   getFirstDayOfMonth() {
     const {renderDay} = this.props;
-    const firstDay = moment(renderDay).startOf("month").format("d"); 
+    const firstDay = moment(renderDay).startOf('month').format('d'); 
     return firstDay;
   };
 

@@ -17,7 +17,7 @@ class CalendarHeader extends React.Component {
     const {onPreHandler, onNextHandler} = this.props;
     const weekdayshort = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
     const weekdayShortName = weekdayshort.map((day, index) => {
-      return <th key={`${index}day`} className="week-day">{day}</th>
+      return <th key={`${index}day`} className='week-day'>{day}</th>
     });
 
 
