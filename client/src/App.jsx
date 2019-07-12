@@ -80,7 +80,9 @@ class App extends React.Component {
     this.state = {
       chosenDay: moment(),
       chosenTime: '1900',
-      partyNum: 4
+      partyNum: 4,
+      restaurantId: 1,
+      spotLeft: null
     }
 
     this.onChosenHandler = this.onChosenHandler.bind(this);
@@ -97,7 +99,31 @@ class App extends React.Component {
   onChangeHandler(key, value) {
     this.setState({
       [key]: value 
-    });
+    }, this.checkReservation);
+  }
+
+  checkReservation() {
+    var timestamp = moment(
+      this.state.chosenDay.format(
+        'YYYY MM DD ' + this.state.chosenTime), 'YYYY MM DD HHmm')
+          .unix() - 25200; // UTC -> PST
+    axios.get('/reservation', {
+      params: {
+        restaurantId: this.state.restaurantId,
+        timestamp: timestamp,
+        partyNum: this.state.partyNum
+      }
+    })
+      .then((results) => {
+        if (results.data.length > 0) {
+          this.setState({
+            spotLeft: results.data[0].num_of_seat
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
  
   render() {
