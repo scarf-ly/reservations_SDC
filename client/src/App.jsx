@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Calendar from './component/Calendar.jsx';
 import moment from 'moment';
+import axios from 'axios';
 
 const ReservationHeader = styled.div`
   margin-top: 5%;
@@ -77,18 +78,27 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      chosenDay: moment()
+      chosenDay: moment(),
+      chosenTime: '1900',
+      partyNum: 4
     }
 
     this.onChosenHandler = this.onChosenHandler.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
   onChosenHandler(unix) {
     var newChosenDay = moment.unix(unix);
     this.setState({
       chosenDay: newChosenDay
-    })
-  } 
+    });
+  }
+
+  onChangeHandler(key, value) {
+    this.setState({
+      [key]: value 
+    });
+  }
  
   render() {
     return(
@@ -106,7 +116,7 @@ class App extends React.Component {
                 <TimePicker className='time-picker'>
                   <div>
                     <span></span>
-                    <FullWidthSelect>
+                    <FullWidthSelect defaultValue='1900' onChange={(event) => {this.onChangeHandler('chosenTime', event.target.value)}}>
                       <option value="1800">06:00 pm</option>
                       <option value="1900">07:00 pm</option>
                       <option value="2000">08:00 pm</option>
@@ -114,10 +124,10 @@ class App extends React.Component {
                     <span></span>
                   </div>
                 </TimePicker>
-                <PeoplePicker className='people-picker'>
+                <PeoplePicker id='peopleSelector' className='people-picker'>
                   <div>
                     <span></span>
-                    <FullWidthSelect>
+                    <FullWidthSelect defaultValue='4' onChange={(event) => {this.onChangeHandler('partyNum', event.target.value)}}>
                       <option value="1">1 person</option>
                       <option value="2">2 people</option>
                       <option value="3">3 people</option>
