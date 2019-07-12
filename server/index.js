@@ -21,7 +21,6 @@ app.get('/reservation', (req, res) => {
   `;
   db.query(sqlQuery, (err, results) => {
     if (err) {
-      console.log(err);
       res.status(500).send(err);
     } else {
       res.status(200).send(results);
