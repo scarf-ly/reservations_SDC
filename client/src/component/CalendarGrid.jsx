@@ -64,8 +64,10 @@ class CalendarGrid extends React.Component {
       }
     });
 
-    let allDaysInMonth = rows.map((day, i) => {
-      return <tr key={`Day${i}`} onClick={(event) => {this.props.onChosenHandler(event.target.attributes.value.value)}}>{day}</tr>;
+    let allDaysInMonth = rows.map((week, i) => {
+      if (week.length > 0) {
+        return <tr key={`Day${i}`} onClick={(event) => {this.props.onChosenHandler(event.target.attributes.value.value)}}>{week}</tr>;
+      }
     });
 
     return (
