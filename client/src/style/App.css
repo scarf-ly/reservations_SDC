@@ -1,0 +1,72 @@
+.islandContainer {
+  height: 160.875px;
+  width: 297.984px;
+  background: #FFFFFF;
+  border: 1px solid #E6E6E6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reservationHeader {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.calendarIconHeader {
+  margin-left: 10px;
+}
+
+.header {
+  margin-left: 10px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333333;
+  font-size: 15px;
+}
+
+.timePartyNumContainer {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdownIcon {
+  margin-left: 60px;
+  position: absolute;
+}
+
+.timePicker {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  width: 50%
+}
+
+.partySizePicker {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  width: 50%  
+}
+
+.reserveButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 30px;
+}
+
+.reserveButton {
+  cursor: pointer;
+  width: 100%;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #41A700;
+}

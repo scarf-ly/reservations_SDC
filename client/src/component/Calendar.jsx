@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import CalendarGrid from './CalendarGrid.jsx';
 import CalendarHeader from './CalendarHeader.jsx';
-
+import styles from '../style/Calendar.css'
 
 
 class Calendar extends React.Component {
@@ -40,12 +40,18 @@ class Calendar extends React.Component {
   render() {
     return (
       <div>
-        <span></span>
-        <div onClick={this.toggleCalender}>{this.props.chosenDay.format('dddd[,] MMMM D[,] YYYY')}</div>
-        <span></span>
+        <div className={styles.datePicker} onClick={this.toggleCalender}>
+          <span className={styles.calendarIconPicker}>
+            <i className='far fa-calendar-alt'></i>
+          </span>
+          <span className={styles.dateValue}>{this.props.chosenDay.format('dddd[,] MMMM D[,] YYYY')}</span>
+          <span className={styles.dropdownIcon}>
+            <i className="fas fa-caret-down"></i>
+          </span>
+        </div>
         {this.state.calendarDisplay
           ?
-          <table className='calendar-day'>
+          <table className={styles.calendar}>
             <CalendarHeader renderDay={this.state.renderDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
             <CalendarGrid chosenDay={this.props.chosenDay} renderDay={this.state.renderDay} onChosenHandler={this.props.onChosenHandler}/>
           </table>

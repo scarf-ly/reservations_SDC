@@ -1,0 +1,28 @@
+.datePicker {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  height: 25px;
+}
+
+.calendarIconPicker {
+  size: 3px;
+  margin-left: 10px;
+}
+
+.dateValue {
+  margin-left: 10px;
+}
+
+.dropdownIcon {
+  margin-left: 250px;
+  position: absolute;
+}
+
+.calendar {
+  position: fixed;
+}

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Calendar from './component/Calendar.jsx';
 import moment from 'moment';
 import axios from 'axios';
+import styles from './style/App.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -68,31 +69,37 @@ class App extends React.Component {
  
   render() {
     return(
-      <div className='island-container'>
-          <div className='reservation-header'>
-            <span></span>
-            <div>Make a Reservation</div>
-          </div>
+      <div className={styles.islandContainer}>
+          <h3 className={styles.reservationHeader}>
+            <span className={styles.calendarIconHeader}>
+              <i className='far fa-calendar-alt'></i>
+            </span>
+            <span className={styles.header}>Make a Reservation</span>
+          </h3>
           <form className='reservation-form-container'>
             <div className='reservation-form'>
               <div className='reservation-fields'>
                 <div className='calender-picker'>
                   <Calendar chosenDay={this.state.chosenDay} onChosenHandler={this.onChosenHandler}/>
                 </div>
-                <div className='time-picker'>
-                  <div>
-                    <span></span>
+                <div className={styles.timePartyNumContainer}>
+                  <span className={styles.timePicker}>
+                    <span>
+                      <i className="far fa-clock"></i>
+                    </span>
                     <select defaultValue='1900' onChange={(event) => {this.onChangeHandler('chosenTime', event.target.value)}}>
                       <option value='1800'>06:00 pm</option>
                       <option value='1900'>07:00 pm</option>
                       <option value='2000'>08:00 pm</option>
                     </select>
-                    <span></span>
-                  </div>
-                </div>
-                <div id='peopleSelector' className='people-picker'>
-                  <div>
-                    <span></span>
+                    <span className={styles.dropdownIcon}>
+                      <i className="fas fa-caret-down"></i>
+                    </span>
+                  </span>
+                  <span id='peopleSelector' className={styles.partySizePicker}>
+                    <span>
+                      <i className="fas fa-user-friends"></i>
+                    </span>
                     <select defaultValue='4' onChange={(event) => {this.onChangeHandler('partyNum', event.target.value)}}>
                       <option value='1'>1 person</option>
                       <option value='2'>2 people</option>
@@ -103,11 +110,15 @@ class App extends React.Component {
                       <option value='7'>7 people</option>
                       <option value='8'>8 people</option>
                     </select>
-                    <span></span>
-                  </div>
+                    <span className={styles.dropdownIcon}>
+                      <i className="fas fa-caret-down"></i>
+                    </span>
+                  </span>
                 </div>
               </div>
-              <button>Find a Table</button>
+              <div className={styles.reserveButtonContainer}>
+                <button className={styles.reserveButton}>Find a Table</button>
+              </div>
               {this.displaySpotsLeftMessage()}
             </div>
           </form>
