@@ -39,6 +39,15 @@ class CalendarGrid extends React.Component {
     }
 
     var totalSlots = [...emptyDaysInMonth, ...daysInMonth];
+    if (totalSlots.length % 7 !== 0) {
+      var count = 1;
+      while (totalSlots.length % 7 !== 0) {
+        totalSlots.push(<td key={`afterLastDay${count}`} className={`${styles.calendarDay} empty`}>{''}</td>);
+        count++;
+      }
+    }
+
+
     let rows = [];
     let cells = [];
 
