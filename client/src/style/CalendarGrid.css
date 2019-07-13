@@ -1,0 +1,16 @@
+.calendarDay {
+  border-collapse: collapse;
+  text-align: center;
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+}
+
+.chosenDay {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.currentDay {
+  font-weight: bold;
+}

@@ -1,0 +1,21 @@
+.monthYear {
+  text-align: center;
+  height: 42px;
+  font-weight: bold;
+}
+
+.leftArrow {
+  cursor: pointer;
+  text-align: center;
+  height: 42px;
+}
+
+.rightArrow {
+  cursor: pointer;
+  text-align: center;
+  height: 42px;
+}
+
+.weekdays {
+  color: red;
+}

@@ -7,6 +7,7 @@
   border: 1px solid #CCCCCC;
   border-radius: 4px;
   height: 25px;
+  font-size: 14px;
 }
 
 .calendarIconPicker {
@@ -27,5 +28,13 @@
 }
 
 .calendar {
+  border-collapse: collapse;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
   position: fixed;
+  margin-left: 10px;
+  background-color: white;
+  width: 278px;
+  height: 250px;
+  z-index: 2;
 }
