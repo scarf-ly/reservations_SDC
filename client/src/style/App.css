@@ -11,6 +11,7 @@
 .reservationHeader {
   display: flex;
   flex-direction: row;
+  margin-left: 3px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -26,31 +27,68 @@
   font-size: 15px;
 }
 
-.timePartyNumContainer {
+.timePartySizeContainer {
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .dropdownIcon {
-  margin-left: 60px;
+  margin-top: 5px;
+  margin-left: 53px;
   position: absolute;
+  color: #444;
 }
 
 .timePicker {
   display: flex;
   justify-content: center;
   cursor: pointer;
-  width: 50%
+  width: 133px;
+}
+
+.selectWithoutStyle {
+  text-align-last: left;
+  padding-left: 35px;
+  cursor: pointer;
+  display: block;
+  color: #444;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.clockIcon {
+  position: absolute;
+  top: 93px;
+  left: 29px;
+  size: 50;
+  color: #444;
+}
+
+.partySizeIcon {
+  position: absolute;
+  top: 93px;
+  left: 172px;
+  size: 50;
+  color: #444;
 }
 
 .partySizePicker {
   display: flex;
   justify-content: center;
   cursor: pointer;
-  width: 50%  
+  width: 133px;
+  height: 25px;
 }
 
 .reserveButtonContainer {
@@ -63,6 +101,8 @@
 }
 
 .reserveButton {
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
   cursor: pointer;
   width: 100%;
   color: #ffffff;

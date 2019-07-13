@@ -82,12 +82,12 @@ class App extends React.Component {
                 <div className='calender-picker'>
                   <Calendar chosenDay={this.state.chosenDay} onChosenHandler={this.onChosenHandler}/>
                 </div>
-                <div className={styles.timePartyNumContainer}>
+                <div className={styles.timePartySizeContainer}>
                   <span className={styles.timePicker}>
-                    <span>
+                    <span className={styles.clockIcon} aria-hidden={true}>
                       <i className="far fa-clock"></i>
                     </span>
-                    <select defaultValue='1900' onChange={(event) => {this.onChangeHandler('chosenTime', event.target.value)}}>
+                    <select className={styles.selectWithoutStyle} defaultValue='1900' onChange={(event) => {this.onChangeHandler('chosenTime', event.target.value)}}>
                       <option value='1800'>06:00 pm</option>
                       <option value='1900'>07:00 pm</option>
                       <option value='2000'>08:00 pm</option>
@@ -97,10 +97,10 @@ class App extends React.Component {
                     </span>
                   </span>
                   <span id='peopleSelector' className={styles.partySizePicker}>
-                    <span>
+                    <span className={styles.partySizeIcon}>
                       <i className="fas fa-user-friends"></i>
                     </span>
-                    <select defaultValue='4' onChange={(event) => {this.onChangeHandler('partyNum', event.target.value)}}>
+                    <select className={styles.selectWithoutStyle} defaultValue='4' onChange={(event) => {this.onChangeHandler('partyNum', event.target.value)}}>
                       <option value='1'>1 person</option>
                       <option value='2'>2 people</option>
                       <option value='3'>3 people</option>

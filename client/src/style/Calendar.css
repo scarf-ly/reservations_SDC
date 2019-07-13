@@ -10,16 +10,19 @@
 }
 
 .calendarIconPicker {
+  color: #444;
   size: 3px;
   margin-left: 10px;
 }
 
 .dateValue {
+  color: #444;
   margin-left: 10px;
 }
 
 .dropdownIcon {
-  margin-left: 250px;
+  color: #444;
+  margin-left: 258px;
   position: absolute;
 }
 
