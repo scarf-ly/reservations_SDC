@@ -1,5 +1,6 @@
 .islandContainer {
-  height: 160.875px;
+  height: auto;
+  min-height: 160.875px;
   width: 297.984px;
   background: #FFFFFF;
   border: 1px solid #E6E6E6;
@@ -68,6 +69,7 @@
   -webkit-appearance: none;
   appearance: none;
   font-size: 12px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .clockIcon {
@@ -112,4 +114,13 @@
   font-weight: bold;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #41A700;
+}
+
+.spotLeftMessage {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #444;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom:5px;
 }

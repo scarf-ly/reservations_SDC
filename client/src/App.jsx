@@ -61,9 +61,9 @@ class App extends React.Component {
   displaySpotsLeftMessage() {
     const {spotLeft, partyNum} = this.state;
     if (spotLeft != null && spotLeft >= partyNum && Math.floor(spotLeft / partyNum) <= 3) {
-      return <div>Only {Math.floor(spotLeft / partyNum)} reservation(s) available for party of {partyNum}</div>
+      return <div className={styles.spotLeftMessage}>Reserve Soon! Only {Math.floor(spotLeft / partyNum)} reservation(s) available for party of {partyNum}</div>
     } else if (spotLeft != null && spotLeft < partyNum) {
-      return <div>Sorry, there's no more online reservations available for party of {partyNum}</div>
+      return <div className={styles.spotLeftMessage}>Sorry, there's no more online reservations available for party of {partyNum}</div>
     }
   }
  
