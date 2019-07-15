@@ -8,7 +8,7 @@ const db = require('./db/index');
 app.use(express.static(path.resolve(__dirname, '..', 'client', 'dist')));
 
 app.get('/reservation', (req, res) => {
-  const { restaurantId, timestamp, partyNum } = req.query; // get query parameters
+  const { restaurantId, timestamp } = req.query; // get query parameters
   const sqlQuery = `
     SELECT
       *
@@ -17,7 +17,6 @@ app.get('/reservation', (req, res) => {
     WHERE
       restaurant_id = ${restaurantId}
       AND timestamp = ${timestamp}
-      AND num_of_seat > ${partyNum}
   `;
   db.query(sqlQuery, (err, results) => {
     if (err) {
