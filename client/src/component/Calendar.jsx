@@ -53,7 +53,7 @@ class Calendar extends React.Component {
           ?
           <table className={styles.calendar}>
             <CalendarHeader renderDay={this.state.renderDay} onPreHandler={this.onPreHandler} onNextHandler={this.onNextHandler}/>
-            <CalendarGrid chosenDay={this.props.chosenDay} renderDay={this.state.renderDay} onChosenHandler={this.props.onChosenHandler}/>
+            <CalendarGrid chosenDay={this.props.chosenDay} renderDay={this.state.renderDay} onChosenHandler={this.props.onChosenHandler} toggleCalender={this.toggleCalender}/>
           </table>
           :
           null

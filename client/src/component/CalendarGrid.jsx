@@ -5,6 +5,8 @@ import styles from '../style/CalendarGrid.css'
 class CalendarGrid extends React.Component {
   constructor(props) {
     super(props);
+
+    this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   getFirstDayOfMonth() {
@@ -12,6 +14,11 @@ class CalendarGrid extends React.Component {
     const firstDay = moment(renderDay).startOf('month').format('d'); 
     return firstDay;
   };
+
+  onClickHandler(event){
+    this.props.onChosenHandler(event.target.attributes.value.value);
+    this.props.toggleCalender();
+  }
 
   render() {
     const {chosenDay, renderDay} = this.props;
@@ -66,7 +73,7 @@ class CalendarGrid extends React.Component {
 
     let allDaysInMonth = rows.map((week, i) => {
       if (week.length > 0) {
-        return <tr key={`Day${i}`} onClick={(event) => {this.props.onChosenHandler(event.target.attributes.value.value)}}>{week}</tr>;
+        return <tr key={`Day${i}`} onClick={this.onClickHandler}>{week}</tr>;
       }
     });
 

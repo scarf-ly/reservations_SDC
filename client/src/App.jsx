@@ -25,7 +25,7 @@ class App extends React.Component {
     var newChosenDay = moment.unix(unix);
     this.setState({
       chosenDay: newChosenDay
-    });
+    }, this.checkReservation);
   }
 
   onChangeHandler(key, value) {
@@ -42,8 +42,7 @@ class App extends React.Component {
     axios.get('/reservation', {
       params: {
         restaurantId: this.state.restaurantId,
-        timestamp: timestamp,
-        partyNum: this.state.partyNum
+        timestamp: timestamp
       }
     })
       .then((results) => {
