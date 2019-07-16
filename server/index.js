@@ -2,13 +2,14 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+const port = 3001;
 const db = require('./db/index');
 
-app.use(express.static(path.resolve(__dirname, '..', 'client', 'dist')));
+app.use('/:restaurantId' ,express.static(path.resolve(__dirname, '..', 'client', 'dist')));
 
-app.get('/reservation', (req, res) => {
-  const { restaurantId, timestamp } = req.query; // get query parameters
+app.get('/reservation/:restaurantId', (req, res) => {
+  const { timestamp } = req.query; // get query parameters
+  const { restaurantId } = req.params;
   const sqlQuery = `
     SELECT
       *

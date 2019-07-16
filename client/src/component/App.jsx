@@ -12,12 +12,18 @@ class App extends React.Component {
       chosenDay: moment(),
       chosenTime: '1900',
       partyNum: 4,
-      restaurantId: 1,
+      restaurantId: null,
       spotLeft: null
     }
 
     this.onChosenHandler = this.onChosenHandler.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+
+  componentDidMount() {
+    const urlStrings = location.href.split('/');
+    let restaurantId = urlStrings[urlStrings.length - 2];
+    this.setState({ restaurantId });
   }
 
   onChosenHandler(unix) {
@@ -38,9 +44,8 @@ class App extends React.Component {
       this.state.chosenDay.format(
         'YYYY MM DD ' + this.state.chosenTime), 'YYYY MM DD HHmm')
           .unix() - 25200; // UTC -> PST
-    axios.get('/reservation', {
+    axios.get(`/reservation/${this.state.restaurantId}`, {
       params: {
-        restaurantId: this.state.restaurantId,
         timestamp: timestamp
       }
     })
