@@ -40,7 +40,7 @@ class Calendar extends React.Component {
   render() {
     return (
       <div>
-        <div className={styles.datePicker} onClick={this.toggleCalender}>
+        <div id='datePicker' className={styles.datePicker} onClick={this.toggleCalender}>
           <span className={styles.calendarIconPicker}>
             <i className='far fa-calendar-alt'></i>
           </span>
