@@ -1,7 +1,9 @@
 .monthYear {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
   height: 42px;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .leftArrow {
@@ -17,5 +19,7 @@
 }
 
 .weekdays {
-  color: red;
+  color: #D32323;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
 }
