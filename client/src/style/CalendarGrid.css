@@ -3,10 +3,12 @@
   text-align: center;
   border: 1px solid #CCCCCC;
   cursor: pointer;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
 }
 
 .chosenDay {
-  background-color: red;
+  background-color: #D32323;
   color: white;
   font-weight: bold;
 }

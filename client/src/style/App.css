@@ -1,4 +1,5 @@
 .islandContainer {
+  margin-left: 500px;
   height: auto;
   min-height: 160.875px;
   width: 297.984px;
@@ -49,6 +50,7 @@
   justify-content: center;
   cursor: pointer;
   width: 133px;
+  height: 25px;
 }
 
 .selectWithoutStyle {
@@ -74,16 +76,16 @@
 
 .clockIcon {
   position: absolute;
-  top: 93px;
-  left: 29px;
+  margin-top: 4px;
+  margin-left: -50px;
   size: 50;
   color: #444;
 }
 
 .partySizeIcon {
   position: absolute;
-  top: 93px;
-  left: 172px;
+  margin-top: 4px;
+  margin-left: -50px;
   size: 50;
   color: #444;
 }
