@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Calendar from './component/Calendar.jsx';
+import Calendar from './Calendar.jsx';
 import moment from 'moment';
 import axios from 'axios';
-import styles from './style/App.css'
+import styles from '../style/App.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -13,12 +12,18 @@ class App extends React.Component {
       chosenDay: moment(),
       chosenTime: '1900',
       partyNum: 4,
-      restaurantId: 1,
+      restaurantId: null,
       spotLeft: null
     }
 
     this.onChosenHandler = this.onChosenHandler.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+
+  componentDidMount() {
+    const urlStrings = location.href.split('/');
+    let restaurantId = urlStrings[urlStrings.length - 2];
+    this.setState({ restaurantId });
   }
 
   onChosenHandler(unix) {
@@ -39,9 +44,8 @@ class App extends React.Component {
       this.state.chosenDay.format(
         'YYYY MM DD ' + this.state.chosenTime), 'YYYY MM DD HHmm')
           .unix() - 25200; // UTC -> PST
-    axios.get('/reservation', {
+    axios.get(`/reservation/${this.state.restaurantId}`, {
       params: {
-        restaurantId: this.state.restaurantId,
         timestamp: timestamp
       }
     })
@@ -53,16 +57,16 @@ class App extends React.Component {
         }
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       })
   }
 
   displaySpotsLeftMessage() {
     const {spotLeft, partyNum} = this.state;
     if (spotLeft != null && spotLeft >= partyNum && Math.floor(spotLeft / partyNum) <= 3) {
-      return <div className={styles.spotLeftMessage}>Reserve Soon! Only {Math.floor(spotLeft / partyNum)} reservation(s) available for party of {partyNum}</div>
+      return <div id='message-spot-available' className={styles.spotLeftMessage}>Reserve Soon! Only {Math.floor(spotLeft / partyNum)} reservation(s) available for party of {partyNum}</div>
     } else if (spotLeft != null && spotLeft < partyNum) {
-      return <div className={styles.spotLeftMessage}>Sorry, there's no more online reservations available for party of {partyNum}</div>
+      return <div id='message-no-spot-available' className={styles.spotLeftMessage}>Sorry, there's no more online reservations available for party of {partyNum}</div>
     }
   }
  
@@ -86,7 +90,7 @@ class App extends React.Component {
                     <span className={styles.clockIcon} aria-hidden={true}>
                       <i className="far fa-clock"></i>
                     </span>
-                    <select className={styles.selectWithoutStyle} defaultValue='1900' onChange={(event) => {this.onChangeHandler('chosenTime', event.target.value)}}>
+                    <select id='timePicker' className={styles.selectWithoutStyle} defaultValue='1900' onChange={(event) => {this.onChangeHandler('chosenTime', event.target.value)}}>
                       <option value='1800'>06:00 pm</option>
                       <option value='1900'>07:00 pm</option>
                       <option value='2000'>08:00 pm</option>
@@ -99,7 +103,7 @@ class App extends React.Component {
                     <span className={styles.partySizeIcon}>
                       <i className="fas fa-user-friends"></i>
                     </span>
-                    <select className={styles.selectWithoutStyle} defaultValue='4' onChange={(event) => {this.onChangeHandler('partyNum', event.target.value)}}>
+                    <select id='partySizePicker' className={styles.selectWithoutStyle} defaultValue='4' onChange={(event) => {this.onChangeHandler('partyNum', event.target.value)}}>
                       <option value='1'>1 person</option>
                       <option value='2'>2 people</option>
                       <option value='3'>3 people</option>
@@ -126,4 +130,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;

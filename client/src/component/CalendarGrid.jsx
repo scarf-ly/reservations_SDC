@@ -39,7 +39,7 @@ class CalendarGrid extends React.Component {
       let chosenDayClass = k == chosenDay.format('D') && chosenYearMonthMatch ? styles.chosenDay : '';
       let value = moment(`${renderDayYearMonth} ${k}`, 'YYYY MM D').unix();
       daysInMonth.push(
-        <td key={`nonEmptyDay${k}`} className={`${styles.calendarDay} ${currentDayClass} ${chosenDayClass}`} value={value}>
+        <td id={`nonEmptyDay${k}`} key={`nonEmptyDay${k}`} className={`${styles.calendarDay} ${currentDayClass} ${chosenDayClass}`} value={value}>
           {k}
         </td>
       );

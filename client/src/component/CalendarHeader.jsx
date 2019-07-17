@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import styles from '../style/CalendarHeader.css'
 
 class CalendarHeader extends React.Component {
