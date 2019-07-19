@@ -49,6 +49,7 @@
   justify-content: center;
   cursor: pointer;
   width: 133px;
+  height: 25px;
 }
 
 .selectWithoutStyle {
@@ -74,16 +75,16 @@
 
 .clockIcon {
   position: absolute;
-  top: 93px;
-  left: 29px;
+  margin-top: 4px;
+  margin-left: -50px;
   size: 50;
   color: #444;
 }
 
 .partySizeIcon {
   position: absolute;
-  top: 93px;
-  left: 172px;
+  margin-top: 4px;
+  margin-left: -50px;
   size: 50;
   color: #444;
 }
