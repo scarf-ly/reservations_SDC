@@ -28,6 +28,7 @@ const insertSeedIntoTable = () => {
     } else {
       console.log('Data successfully inserted');
     }
+    process.exit();
   });
 };
 
