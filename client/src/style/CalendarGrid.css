@@ -7,6 +7,10 @@
   font-size: 13px;
 }
 
+.calendarDay:hover {
+  background-color: #F5F5F5
+}
+
 .chosenDay {
   background-color: #D32323;
   color: white;
