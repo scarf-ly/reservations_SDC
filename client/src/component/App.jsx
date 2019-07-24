@@ -24,6 +24,7 @@ class App extends React.Component {
     const urlStrings = location.href.split('/');
     let restaurantId = urlStrings[urlStrings.length - 2];
     this.setState({ restaurantId });
+    console.log(moment(1571252400).format('MMMM D YYYY'));
   }
 
   onChosenHandler(unix) {
