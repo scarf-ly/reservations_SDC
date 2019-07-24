@@ -11,16 +11,23 @@
 
 
 GET Params:
+
 query = [unix timestamp]
+
 restaurant_id = [integer]
 
 POST Params:
+
 restaurant_id = [integer]
+
 restaurant_name = [string]
 
 
 PUT/PATCH Params:
+
 query = [unix timestamp]
+
 restaurant_id = [integer]
+
 reservation_size = [integer]
 
