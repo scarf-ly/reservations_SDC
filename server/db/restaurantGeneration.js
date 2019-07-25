@@ -1,4 +1,4 @@
-// \copy restaurants (restaurant_name, available_seats) FROM '/Users/keatontatooles/Documents/sdc/reservation/server/db/restaurants.csv' DELIMITER ',' CSV;
+// \copy restaurants (restaurant_name, available_seats) FROM '/Users/keatontatooles/Documents/sdc/reservation/restaurantsTest.csv' DELIMITER ',' CSV;
 // node --max-old-space-size=7168 restaurantGeneration.js
 
 const arrayCsv = require("array-csv");

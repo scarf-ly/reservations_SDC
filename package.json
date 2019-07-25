@@ -6,11 +6,12 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "webpack-dev": "webpack",
-    "server-dev": "node server/index.js",
+    "start": "node server/index.js",
     "database": "mysql -h db -uroot -ppassword < server/db/schema.sql",
     "seed": "node ./server/db/seed.js",
     "lint": "eslint --ext .js --ext .jsx . --fix",
-    "test": "jest"
+    "test": "jest",
+    "seed1": "node server/db/reservationGeneration.js"
   },
   "repository": {
     "type": "git",
