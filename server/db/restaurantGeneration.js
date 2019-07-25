@@ -4,13 +4,13 @@
 const arrayCsv = require("array-csv");
 const faker = require('faker')
 
-console.log(faker.random.word());
+console.log(faker.name.lastName());
 
 const arrayWithoutHeader = [];
 
-while (arrayWithoutHeader.length < 10) {
+while (arrayWithoutHeader.length < 10000000) {
   const newEntry = [];
-  newEntry.push(faker.random.word(), 10 + Math.floor(Math.random()*50));
+  newEntry.push(faker.name.lastName(), 10 + Math.floor(Math.random()*50));
   arrayWithoutHeader.push(newEntry);
 }
 
