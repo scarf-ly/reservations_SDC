@@ -4,3 +4,8 @@ client/dist/bundle.js
 coverage
 server/db/restaurants.csv
 server/db/reservations.csv
+reservations.csv
+restaurants.csv
+restaurants2.csv
+reservations2.csv
+reservations.csv

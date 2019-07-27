@@ -51,8 +51,8 @@ const generateData = () => {
 }
 
 
-const restaurantsWriteStream = fs.createWriteStream('restaurants.csv');
-const reservationsWriteStream = fs.createWriteStream('reservations2.csv');
+const restaurantsWriteStream = fs.createWriteStream('restaurantsCA.csv');
+const reservationsWriteStream = fs.createWriteStream('reservationsCA.csv');
 
 let data =[1+ Math.floor(Math.random()*10), Math.floor(Math.random()*100), Math.floor(Math.random()*100)].join(',')
 function writeOneMillionTimes(restaurantsWriteStream, reservationsWriteStream, data, encoding, callback) {
