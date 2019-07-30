@@ -12,6 +12,7 @@ var startTime = 1564707600 // August 1st 2019 at 6 PM Pacific in Unix Time
 function randomRange(min, max) { // random number between min (inclusive) and max (exclusive);
   return Math.floor(Math.random() * (max - min)) + min;
 }
+var reservation_id = 1564455003;
 
 const generateData = () => {
     count += 1;
@@ -22,19 +23,27 @@ const generateData = () => {
     let reservation_length = 60 + Math.floor(Math.random()*4)*15;
     let open_time = 9 + Math.floor(Math.random()*6);
     let close_time = 15 + Math.floor(Math.random()*8);
-    let reservation_increment = [15, 30, 60][Math.floor(Math.random()*3)];
     let available_seats = 10 + Math.floor(Math.random()*30);
     const restaurantsArr = [];
-    restaurantsArr.push(restaurant_name, min_reservation_size, max_reservation_size, reservation_length, open_time, close_time, reservation_increment, available_seats);
+    restaurantsArr.push(count, restaurant_name, min_reservation_size, max_reservation_size, reservation_length, open_time, close_time, available_seats, 0, 0, 0);
     let restaurants = restaurantsArr.join(',');
     restaurants += '\n';
     
-    let reservation_count = 20 + Math.floor(Math.random()*50);
+    const likelihood1 = Math.random();
+    let reservation_count;
+    if (likelihood1 > 0.9) {
+      reservation_count = 90 + Math.floor(Math.random()*20);
+    } else if (likelihood1 > 0.5) {
+       reservation_count = 20 + Math.floor(Math.random()*20);
+    } else {
+       reservation_count = 1 + Math.floor(Math.random()*3);
+    }
+
+    // let reservation_count = 20 + Math.floor(Math.random()*50);
     let reservations = '';
     for (let i = 0; i < reservation_count; i++) {
       const reservationsArr = []; 
       const likelihood = Math.random();
-      let timestamp;
       if (likelihood > 0.3) {
         timestamp = startTime + (Math.floor(Math.random()*3) * 3600) + (Math.floor(Math.random()*4) * 86400)
       } else {
@@ -42,7 +51,7 @@ const generateData = () => {
         timestamp = originalTime + (open_time * 3600) + (Math.floor(Math.random()*timeframe)*3600);
       }
       const reservation_size = randomRange(min_reservation_size, max_reservation_size + 1);
-      reservationsArr.push(count, timestamp, reservation_size);
+      reservationsArr.push(count, Math.floor(Math.random()*50000000), timestamp, reservation_size);
       let reservationEntry = reservationsArr.join(',');
       reservationEntry += '\n';
       reservations += reservationEntry;

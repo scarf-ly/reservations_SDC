@@ -35,3 +35,22 @@ restaurant_id = [integer]
 
 reservation_size = [integer]
 
+
+
+
+
+Queries I want to support
+
+Select all reservations and their times/sizes based on restaurant ID (have this done)
+Find all reservations and their sizes for a specific restaurant at a specific time (I believe I have this as well)
+
+Refactor timing to incldue people already sitting at the table maybe? 
+
+area:
+zip code (probably won't work, need to find a way to do surroundign area)
+
+In order to cancel a specific reservation:
+Have a unique reservation key that comes after a unique user id 
+--in order for a user to cancel a rservation, first show their reservations. Then find the specicic one they want to cancel
+  (that has stuff like time and size on it)
+

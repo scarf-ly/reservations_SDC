@@ -1,18 +1,22 @@
-CREATE TABLE reservations (
-    id int
-)
+
 
 CREATE TABLE reservations (
     id int,
     restaurant_name varchar,
-    open_time smallint,
-    close_time smallint,
-    reservation_length tinyint,
     min_reservation_size tinyint,
     max_reservation_size tinyint,
+    reservation_length tinyint,
+    open_time smallint,
+    close_time smallint,
     available_seats tinyint,
-    day int,
-    time smallint,
+    user_id int,
+    reservation_time int,
     party tinyint,
-    PRIMARY KEY (id, day, time, party)
+    PRIMARY KEY (id, user_id, reservation_time, party)
 );
+
+
+
+COPY reservations (id, restaurant_name, min_reservation_size, max_reservation_size, reservation_length, open_time, close_time, available_seats, user_id, reservation_time, party) FROM '/Users/keatontatooles/Documents/sdc/reservation/restaurantsCA.csv' WITH DELIMITER=',' AND HEADER=FALSE;
+
+COPY reservations (id, user_id, reservation_time, party) FROM '/Users/keatontatooles/Documents/sdc/reservation/reservationsCA.csv' WITH DELIMITER=',' AND HEADER=FALSE;

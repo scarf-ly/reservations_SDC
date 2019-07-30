@@ -11,7 +11,8 @@
     "seed": "node ./server/db/seed.js",
     "lint": "eslint --ext .js --ext .jsx . --fix",
     "test": "jest",
-    "seed1": "node server/db/reservationGeneration.js"
+    "seed1": "node server/db/reservationGeneration.js",
+    "seed2": "node server/db/cassandraGeneration.js"
   },
   "repository": {
     "type": "git",
