@@ -1,4 +1,4 @@
-create table restaurants2 (
+create table restaurants (
     id serial primary key,
     restaurant_name varchar(50),
     min_reservation_size smallint,
@@ -6,12 +6,12 @@ create table restaurants2 (
     reservation_length smallint,
     open_time smallint,
     close_time smallint,
-    reservation_increment smallint,
     available_seats smallint
 );
 
 create table reservations (
     restaurant_id integer,
+    user_id integer,
     reservation_time integer,
     reservation_size smallint
 );
@@ -26,8 +26,8 @@ hour range of reservations for each restaurant
 in restaurant table, 2 fields for min and max 
 find all restauratns with availability for 3 people at this time 
 
-\copy restaurants2 (restaurant_name, min_reservation_size, max_reservation_size, reservation_length, open_time, close_time, reservation_increment, available_seats) FROM '/Users/keatontatooles/Documents/sdc/reservation/restaurants2.csv' DELIMITER ',' CSV;
-\copy reservations (restaurant_id, reservation_time, reservation_size) FROM '/Users/keatontatooles/Documents/sdc/reservation/reservations.csv' DELIMITER ',' CSV;
+\copy restaurants (restaurant_name, min_reservation_size, max_reservation_size, reservation_length, open_time, close_time, available_seats) FROM '/Users/keatontatooles/Documents/sdc/reservation/restaurants.csv' DELIMITER ',' CSV;
+\copy reservations (restaurant_id, user_id, reservation_time, reservation_size) FROM '/Users/keatontatooles/Documents/sdc/reservation/reservations.csv' DELIMITER ',' CSV;
 
 
 1

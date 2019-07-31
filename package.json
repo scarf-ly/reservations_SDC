@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js --ext .jsx . --fix",
     "test": "jest",
     "seed1": "node server/db/reservationGeneration.js",
-    "seed2": "node server/db/cassandraGeneration.js"
+    "seed2": "node server/db/cassandraGeneration.js",
+    "seedPG": "node server/db/restaurantGeneration.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "array-csv": "^1.1.0",
+    "cassandra-driver": "^4.1.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "fs": "0.0.1-security",
@@ -35,6 +37,7 @@
     "mysql": "^2.17.1",
     "os": "^0.1.1",
     "path": "^0.12.7",
+    "pg": "^7.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
