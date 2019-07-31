@@ -25,7 +25,7 @@ const generateData = () => {
     let close_time = 15 + Math.floor(Math.random()*8);
     let available_seats = 10 + Math.floor(Math.random()*30);
     const restaurantsArr = [];
-    restaurantsArr.push(count, restaurant_name, min_reservation_size, max_reservation_size, reservation_length, open_time, close_time, available_seats, 0, 0, 0);
+    restaurantsArr.push(count, restaurant_name, min_reservation_size, max_reservation_size, reservation_length, open_time, close_time, available_seats);
     let restaurants = restaurantsArr.join(',');
     restaurants += '\n';
     
@@ -41,8 +41,10 @@ const generateData = () => {
 
     // let reservation_count = 20 + Math.floor(Math.random()*50);
     let reservations = '';
+    let users = '';
     for (let i = 0; i < reservation_count; i++) {
       const reservationsArr = []; 
+      const usersArr = [];
       const likelihood = Math.random();
       if (likelihood > 0.3) {
         timestamp = startTime + (Math.floor(Math.random()*3) * 3600) + (Math.floor(Math.random()*4) * 86400)
@@ -51,17 +53,24 @@ const generateData = () => {
         timestamp = originalTime + (open_time * 3600) + (Math.floor(Math.random()*timeframe)*3600);
       }
       const reservation_size = randomRange(min_reservation_size, max_reservation_size + 1);
-      reservationsArr.push(count, Math.floor(Math.random()*50000000), timestamp, reservation_size);
+      const user_id = Math.floor(Math.random()*50000000);
+      reservationsArr.push(count, reservation_id, user_id, timestamp, reservation_size);
+      usersArr.push(user_id, reservation_id, count, timestamp, reservation_size);
       let reservationEntry = reservationsArr.join(',');
+      let usersEntry = usersArr.join(',');
       reservationEntry += '\n';
+      usersEntry += '\n';
       reservations += reservationEntry;
+      users += usersEntry;
+      reservation_id -= 1;
     }
-    return [restaurants, reservations];    
+    return [restaurants, reservations, users];    
 }
 
 
 const restaurantsWriteStream = fs.createWriteStream('restaurantsCA.csv');
-const reservationsWriteStream = fs.createWriteStream('reservationsCA.csv');
+const reservationsWriteStream = fs.createWriteStream('reservationsRestaurantsCA.csv');
+const usersWriteStream = fs.createWriteStream('reservationsUsersCA.csv');
 
 let data =[1+ Math.floor(Math.random()*10), Math.floor(Math.random()*100), Math.floor(Math.random()*100)].join(',')
 function writeOneMillionTimes(restaurantsWriteStream, reservationsWriteStream, data, encoding, callback) {
@@ -74,14 +83,17 @@ function writeOneMillionTimes(restaurantsWriteStream, reservationsWriteStream, d
         data = generateData()
         restaurantData = data[0];
         reservationData = data[1];
+        userData = data[2];
         if (i === 0) {
           // Last time!
           restaurantsWriteStream.write(restaurantData, encoding, callback);
           reservationsWriteStream.write(reservationData, encoding, callback);
+          usersWriteStream.write(userData, encoding, callback);
         } else {
           // See if we should continue, or wait.
           // Don't pass the callback, because we're not done yet.
           restaurantsWriteStream.write(restaurantData, encoding);
+          usersWriteStream.write(userData, encoding)
           ok = reservationsWriteStream.write(reservationData, encoding);
         }
       } while (i > 0 && ok);
