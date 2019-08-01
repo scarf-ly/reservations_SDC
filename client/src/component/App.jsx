@@ -45,7 +45,7 @@ class App extends React.Component {
       this.state.chosenDay.format(
         'YYYY MM DD ' + this.state.chosenTime), 'YYYY MM DD HHmm')
           .unix() - 25200; // UTC -> PST
-    axios.get(`/reservation/${this.state.restaurantId}`, {
+    axios.get(`/${this.state.restaurantId}/reservation/`, {
       params: {
         timestamp: timestamp
       }
