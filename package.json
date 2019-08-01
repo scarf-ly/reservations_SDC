@@ -6,7 +6,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "webpack-dev": "webpack",
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js",
     "database": "mysql -h db -uroot -ppassword < server/db/schema.sql",
     "seed": "node ./server/db/seed.js",
     "lint": "eslint --ext .js --ext .jsx . --fix",

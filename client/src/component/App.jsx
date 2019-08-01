@@ -13,7 +13,8 @@ class App extends React.Component {
       chosenTime: '1900',
       partyNum: 4,
       restaurantId: null,
-      spotLeft: null
+      spotLeft: null,
+      available_seats: 100,
     }
 
     this.onChosenHandler = this.onChosenHandler.bind(this);
@@ -25,6 +26,12 @@ class App extends React.Component {
     let restaurantId = urlStrings[urlStrings.length - 2];
     this.setState({ restaurantId });
     console.log(moment(1571252400).format('MMMM D YYYY'));
+    axios.get(`/${restaurantId}/restaurantCapacity`)
+     .then((results) => {
+       this.setState({
+         available_seats: results.data[0].available_seats,
+       });
+     });
   }
 
   onChosenHandler(unix) {
@@ -41,6 +48,8 @@ class App extends React.Component {
   }
 
   checkReservation() {
+    const { available_seats } = this.state;
+    let takenSeats = 0;
     var timestamp = moment(
       this.state.chosenDay.format(
         'YYYY MM DD ' + this.state.chosenTime), 'YYYY MM DD HHmm')
@@ -51,11 +60,16 @@ class App extends React.Component {
       }
     })
       .then((results) => {
-        if (results.data.length > 0) {
-          this.setState({
-            spotLeft: results.data[0].num_of_seat
-          });
+        for (let i = 0; i < results.data.length; i++) {
+          takenSeats += results.data[i].reservation_size;
         }
+        let spotLeft = available_seats - takenSeats;
+        if (spotLeft < 0 ) {
+          spotLeft = 0;
+        }
+        this.setState({
+          spotLeft,
+        });
       })
       .catch((err) => {
         return err;
