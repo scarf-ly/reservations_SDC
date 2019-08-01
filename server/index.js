@@ -4,7 +4,11 @@ const path = require('path');
 const app = express();
 const port = 3001;
 const db = require('./db/index');
-const client = require('./db/postgresDriver.js');
+const { Client } = require('pg')
+const client = new Client({
+    database: 'mydb'
+})
+client.connect()
 
 app.use('/:restaurantId' ,express.static(path.resolve(__dirname, '..', 'client', 'dist')));
 
