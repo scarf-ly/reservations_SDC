@@ -7,7 +7,7 @@ const db = require('./db/index');
 
 app.use('/:restaurantId' ,express.static(path.resolve(__dirname, '..', 'client', 'dist')));
 
-app.get('/reservation/:restaurantId', (req, res) => {
+app.get('/:restaurantId/reservation/', (req, res) => {
   const { timestamp } = req.query; // get query parameters
   const { restaurantId } = req.params;
   const sqlQuery = `
