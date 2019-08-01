@@ -63,8 +63,12 @@ class App extends React.Component {
         for (let i = 0; i < results.data.length; i++) {
           takenSeats += results.data[i].reservation_size;
         }
+        let spotLeft = available_seats - takenSeats;
+        if (spotLeft < 0 ) {
+          spotLeft = 0;
+        }
         this.setState({
-          spotLeft: available_seats - takenSeats
+          spotLeft,
         });
       })
       .catch((err) => {
