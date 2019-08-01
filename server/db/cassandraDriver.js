@@ -19,30 +19,28 @@ const client = new cassandra.Client({
 //   })
 //   .catch(err => console.log(err));
 
-const myStream = fs.createWriteStream('cassandraSpeedResultRestaurants.csv');
-var start;
-var end;
+const myStream = fs.createWriteStream('cassandraSpeedResult3.csv');
 var query;
 
-// for (let i = 4000000; i < 4001001; i++) {
-//   query = `select * from reservations_by_restaurant where restaurant_id = ${i} and reservation_time >= 1564966800 allow filtering`;
-//   start = new Date().getTime();
-//   client.execute(query)
-//   .then((result) => {
-//       end = new Date().getTime();
-//       myStream.write((end - start).toString() + '\n');
-//   })
-//   .catch(err => console.log(err));
-// }
-
-
 for (let i = 4000000; i < 4001001; i++) {
-    query = `select * from restaurants where restaurant_id = ${i}`;
-    start = new Date().getTime();
-    client.execute(query)
-    .then((result) => {
-        end = new Date().getTime();
-        myStream.write((end - start).toString() + '\n');
-    })
-    .catch(err => console.log(err));
-  }
+  query = `select * from reservations_by_restaurant where restaurant_id = ${i};`
+  let start = new Date().getTime();
+  client.execute(query)
+  .then((result) => {
+      let end = new Date().getTime();
+      myStream.write((end - start).toString() + '\n');
+  })
+  .catch(err => console.log(err));
+}
+
+
+// for (let i = 1000000; i < 1001001; i++) {
+//     query = `select * from restaurants where restaurant_id = ${i}`;
+//     start = new Date().getTime();
+//     client.execute(query)
+//     .then((result) => {
+//         end = new Date().getTime();
+//         myStream.write((end - start).toString() + '\n');
+//     })
+//     .catch(err => console.log(err));
+//   }

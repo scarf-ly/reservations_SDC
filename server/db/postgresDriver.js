@@ -5,8 +5,6 @@ const client = new Client({
 })
 client.connect()
 var query;
-var start;
-var end;
 
 // query = {
 //     text: 'SELECT * FROM restaurants where id = ($1)',
@@ -53,10 +51,9 @@ for (let i = 6000000; i < 6001001; i++) {
         text: 'SELECT * FROM reservations where restaurant_id = ($1) and reservation_time >=($2)',
         values: [i.toString(), '1564966800'],
     }
-    start = new Date().getTime();
+    let start = new Date().getTime();
     client.query(query, (err, res) => {
-        end = new Date().getTime();
+        let end = new Date().getTime();
         myWriteStream.write((end - start).toString() + '\n');
-        
     });
 }
