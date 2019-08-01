@@ -57,3 +57,5 @@ for (let i = 6000000; i < 6001001; i++) {
         myWriteStream.write((end - start).toString() + '\n');
     });
 }
+
+module.exports = client;
