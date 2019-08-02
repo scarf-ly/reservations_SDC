@@ -1,0 +1,14 @@
+config:
+  target: 'http://localhost:3001'
+  processor: "./artilleryFunctions.js"
+  phases:
+    - duration: 10
+      arrivalRate: 10
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - name: "Load the page"
+    flow:
+    - get:
+        url: "/1000"
