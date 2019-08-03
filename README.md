@@ -71,3 +71,5 @@ Patch to take an existing reservation, delete it, and change its time/number of 
 In order to do this you will have to do the get request on each of the time increments for that day 
 
 
+patch only changes what you send in
+put changes a whole record in a database 
