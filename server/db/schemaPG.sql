@@ -34,3 +34,9 @@ find all restauratns with availability for 3 people at this time
 2
 ALTER TABLE reservations 
 ADD CONSTRAINT new_foreign_keys FOREIGN KEY (restaurant_id) REFERENCES restaurants (id);
+
+
+
+\copy restaurants (restaurant_name, min_reservation_size, max_reservation_size, reservation_length, open_time, close_time, available_seats) FROM '/home/ec2-user/restaurants.csv' DELIMITER ',' CSV;
+
+\copy reservations (restaurant_id, user_id, reservation_time, reservation_size) FROM '/home/ec2-user/reservations.csv' DELIMITER ',' CSV;
