@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['Yelp Reservations'],
+  app_name: ['Yelp Reservations Deployed'],
   /**
    * Your New Relic license key.
    */

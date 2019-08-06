@@ -5,12 +5,17 @@ const redis = require('redis');
 const REDIS_PORT = process.env.REDIS_PORT;
 const redisClient = redis.createClient(REDIS_PORT);
 
+const loaderIO = 'loaderio-a7d8f1f689c273274ec764b8a3dee014';
+
 const app = express();
 const port = 3001;
-const db = require('./db/index');
+
 const { Client } = require('pg')
 const client = new Client({
-    database: 'mydb'
+    user: 'postgres',
+    password: 'password',
+    database: 'postgres',
+    host: 'ec2-54-153-60-70.us-west-1.compute.amazonaws.com',
 })
 client.connect()
 
@@ -44,6 +49,11 @@ const reservationCache = (req, res, next) => {
 // the middleware function itself takes request and response, searches the cache for the thing, then does next() if it doesn't return anything
 // when you do the database query make sure to add the result of the specific call to the cache 
 // 
+//
+app.get('/loaderio-a7d8f1f689c273274ec764b8a3dee014', (req, res) => {
+  res.send('loaderio-a7d8f1f689c273274ec764b8a3dee014')
+});
+ 
 app.get('/:restaurantId/reservation/', reservationCache, (req, res) => {
   const { timestamp } = req.query; // get query parameters
   const { restaurantId } = req.params;
