@@ -19,6 +19,10 @@ const client = new Client({
 })
 client.connect()
 
+app.get('/loaderio-a7d8f1f689c273274ec764b8a3dee014', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'loaderio-a7d8f1f689c273274ec764b8a3dee014.txt'))
+});
+
 app.use('/:restaurantId' ,express.static(path.resolve(__dirname, '..', 'client', 'dist')));
 
 const restaurantCache = (req, res, next) => {
@@ -50,9 +54,6 @@ const reservationCache = (req, res, next) => {
 // when you do the database query make sure to add the result of the specific call to the cache 
 // 
 //
-app.get('/loaderio-a7d8f1f689c273274ec764b8a3dee014', (req, res) => {
-  res.send('loaderio-a7d8f1f689c273274ec764b8a3dee014')
-});
  
 app.get('/:restaurantId/reservation/', reservationCache, (req, res) => {
   const { timestamp } = req.query; // get query parameters
