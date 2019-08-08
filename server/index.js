@@ -19,8 +19,8 @@ const client = new Client({
 })
 client.connect()
 
-app.get('/loaderio-a7d8f1f689c273274ec764b8a3dee014', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'loaderio-a7d8f1f689c273274ec764b8a3dee014.txt'))
+app.get('/loaderio-5da5e0ba28c25911b40440f3e1f7b20d', (req, res) => {
+  res.send('loaderio-5da5e0ba28c25911b40440f3e1f7b20d')
 });
 
 app.use('/:restaurantId' ,express.static(path.resolve(__dirname, '..', 'client', 'dist')));
